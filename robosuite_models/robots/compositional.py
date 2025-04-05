@@ -239,3 +239,9 @@ class UR5eDexRHOmron(UR5eDexRH):
     @property
     def default_base(self):
         return "OmronMobileBase"
+
+@register_robot_class("FixedBaseRobot")
+class XArm7(XArm7):
+    @property
+    def default_gripper(self):
+        return {"right": "XArmGripper"}

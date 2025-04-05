@@ -1,0 +1,108 @@
+<?xml version="1.0" ?>
+<mujoco model="xarm7">
+  <compiler angle="radian"/>
+  
+  <actuator>
+    <motor name="torq_j1" joint="joint1" ctrllimited="true" ctrlrange="-150 150"/>
+    <motor name="torq_j2" joint="joint2" ctrllimited="true" ctrlrange="-150 150"/>
+    <motor name="torq_j3" joint="joint3" ctrllimited="true" ctrlrange="-100 100"/>
+    <motor name="torq_j4" joint="joint4" ctrllimited="true" ctrlrange="-100 100"/>
+    <motor name="torq_j5" joint="joint5" ctrllimited="true" ctrlrange="-100 100"/>
+    <motor name="torq_j6" joint="joint6" ctrllimited="true" ctrlrange="-50 50"/>
+    <motor name="torq_j7" joint="joint7" ctrllimited="true" ctrlrange="-50 50"/>
+  </actuator>
+
+  <asset>
+    <material name="white" rgba="1 1 1 1"/>
+    <material name="gray" rgba="0.753 0.753 0.753 1"/>
+    <mesh name="robot0_link_base" file="meshes/link_base.stl"/>
+    <mesh name="robot0_link1" file="meshes/link1.stl"/>
+    <mesh name="robot0_link2" file="meshes/link2.stl"/>
+    <mesh name="robot0_link3" file="meshes/link3.stl"/>
+    <mesh name="robot0_link4" file="meshes/link4.stl"/>
+    <mesh name="robot0_link5" file="meshes/link5.stl"/>
+    <mesh name="robot0_link6" file="meshes/link6.stl"/>
+    <mesh name="robot0_link7" file="meshes/link7.stl"/>
+    <mesh name="robot0_end_tool" file="meshes/end_tool.stl"/>
+  </asset>
+
+  <worldbody>
+    <!-- Base fixed to world without a free joint -->
+    <body name="base" pos="0 0 0.12">
+      <inertial pos="-0.021131 -0.0016302 0.056488" quat="0.696843 0.20176 0.10388 0.680376" mass="0.88556"
+                diaginertia="0.00382023 0.00335282 0.00167725"/>
+      <geom type="mesh" mesh="robot0_link_base" material="white" contype="0" conaffinity="0" group="1" name="base_visual"/>
+      <geom type="mesh" mesh="robot0_link_base" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1" group="0" name="base_collision"/>
+      <camera mode="fixed" name="robotview" pos="0 0 1" quat="0.5 0.5 0.5 0.5"/>
+      <site name="right_center" pos="0 0 0" size="0.01" rgba="1 0.3 0.3 1" group="2"/>
+      <!-- Link 1 -->
+      <body name="robot0_link1" pos="0 0 0.267">
+        <inertial pos="-0.0002 0.02905 -0.01233" quat="0.978953 -0.202769 -0.00441617 -0.0227264" mass="2.382"
+                  diaginertia="0.00569127 0.00533384 0.00293865"/>
+        <joint name="joint1" axis="0 0 1" range="-6.28319 6.28319" frictionloss="0.1" damping="0.05" armature="0.1"/>
+        <geom type="mesh" mesh="robot0_link1" material="gray" contype="0" conaffinity="0" group="1" name="link1_visual"/>
+        <geom type="mesh" mesh="robot0_link1" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1" group="0" name="link1_collision"/>
+
+        <!-- Link 2 -->
+        <body name="robot0_link2" quat="1 -1 0 0">
+          <inertial pos="0.00022 -0.12856 0.01735" quat="0.50198 0.86483 -0.00778841 0.00483285" mass="1.869"
+                    diaginertia="0.00959898 0.00937717 0.00201315"/>
+          <joint name="joint2" axis="0 0 1" range="-2.059 2.0944" frictionloss="0.1" damping="0.05" armature="0.1"/>
+          <geom type="mesh" mesh="robot0_link2" material="white" contype="0" conaffinity="0" group="1" name="link2_visual"/>
+          <geom type="mesh" mesh="robot0_link2" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1" group="0" name="link2_collision"/>
+
+          <!-- Link 3 -->
+          <body name="robot0_link3" pos="0 -0.293 0" quat="1 1 0 0">
+            <inertial pos="0.0466 -0.02463 -0.00768" quat="0.913819 0.289775 0.281481 -0.0416455" mass="1.6383"
+                      diaginertia="0.00351721 0.00294089 0.00195868"/>
+            <joint name="joint3" axis="0 0 1" range="-6.28319 6.28319" frictionloss="0.1" damping="0.05" armature="0.1"/>
+            <geom type="mesh" mesh="robot0_link3" material="gray" contype="0" conaffinity="0" group="1" name="link3_visual"/>
+            <geom type="mesh" mesh="robot0_link3" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1" group="0" name="link3_collision"/>
+
+            <!-- Link 4 -->
+            <body name="robot0_link4" pos="0.0525 0 0" quat="1 1 0 0">
+              <inertial pos="0.07047 -0.11575 0.012" quat="0.422108 0.852026 -0.126025 0.282832" mass="1.7269"
+                        diaginertia="0.00657137 0.00647948 0.00186763"/>
+              <joint name="joint4" axis="0 0 1" range="-0.19198 3.927" frictionloss="0.1" damping="0.03" armature="0.1"/>
+              <geom type="mesh" mesh="robot0_link4" material="white" contype="0" conaffinity="0" group="1" name="link4_visual"/>
+              <geom type="mesh" mesh="robot0_link4" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1" group="0" name="link4_collision"/>
+
+              <!-- Link 5 -->
+              <body name="robot0_link5" pos="0.0775 -0.3425 0" quat="1 1 0 0">
+                <inertial pos="-0.00032 0.01604 -0.026" quat="0.999311 -0.0304457 0.000577067 0.0212082" mass="1.3203"
+                          diaginertia="0.00534729 0.00499076 0.0013489"/>
+                <joint name="joint5" axis="0 0 1" range="-6.28319 6.28319" frictionloss="0.1" damping="0.03" armature="0.1"/>
+                <geom type="mesh" mesh="robot0_link5" material="gray" contype="0" conaffinity="0" group="1" name="link5_visual"/>
+                <geom type="mesh" mesh="robot0_link5" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1" group="0" name="link5_collision"/>
+
+                <!-- Link 6 -->
+                <body name="robot0_link6" pos="0 0 0" quat="1 1 0 0">
+                  <inertial pos="0.06469 0.03278 0.02141" quat="-0.217672 0.772419 0.16258 0.574069" mass="1.325"
+                            diaginertia="0.00245421 0.00221646 0.00107273"/>
+                  <joint name="joint6" axis="0 0 1" range="-1.69297 3.14159" frictionloss="0.1" damping="0.03" armature="0.1"/>
+                  <geom type="mesh" mesh="robot0_link6" material="white" contype="0" conaffinity="0" group="1" name="link6_visual"/>
+                  <geom type="mesh" mesh="robot0_link6" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1" group="0" name="link6_collision"/>
+
+                  <!-- Link 7 (right_hand) -->
+                  <body name="right_hand" pos="0.076 0.097 0" quat="1 -1 0 0">
+                    <inertial pos="0 -0.00677 -0.01098" quat="0.487612 0.512088 -0.512088 0.487612" mass="0.17"
+                              diaginertia="0.000132176 9.3e-05 5.85236e-05"/>
+                    <joint name="joint7" axis="0 0 1" range="-6.28319 6.28319" frictionloss="0.1" damping="0.02" armature="0.1"/>
+                    <geom type="mesh" mesh="robot0_link7" material="gray" contype="0" conaffinity="0" group="1" name="link7_visual"/>
+                    <geom type="mesh" mesh="robot0_link7" rgba="0.7 0.7 0.7 1" contype="1" conaffinity="1" group="0" name="link7_collision"/>
+                    <geom material="gray" mesh="end_tool"/>
+                    <camera mode="fixed" name="eye_in_hand" pos="0.05 0 0" quat="0 0.707108 0.707108 0" fovy="75"/>
+                    <!-- TCP for gripper attachment -->
+                    <body name="link_tcp" pos="0 0 0.172">
+                      <inertial pos="0 0 0" mass="0.01" diaginertia="1e-6 1e-6 1e-6"/>
+                    </body>
+                  </body>
+                </body>
+              </body>
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+</mujoco>

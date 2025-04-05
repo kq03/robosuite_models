@@ -8,3 +8,4 @@ from .h1_robot import H1, H1FloatingBody, H1FixedLowerBody, H1ArmsOnly
 from .g1_robot import G1, G1FloatingBody, G1FixedLowerBody, G1ArmsOnly
 from .pr2_robot import PR2
 from .arx5_robot import Arx5
+from .xarm7_robot import XArm7
